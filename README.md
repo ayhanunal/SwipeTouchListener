@@ -1,4 +1,4 @@
-<h1 align="center"> AndroidCameraX </h1>
+<h1 align="center"> Swipe Touch Listener App </h1>
 <p align="center"> You can control swipe action and touch events on views with SwipeTouchListener </p>
 
 ## OnSwipeTouchListener.kt
