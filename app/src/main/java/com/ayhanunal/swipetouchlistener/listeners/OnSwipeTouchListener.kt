@@ -30,7 +30,29 @@ open class OnSwipeTouchListener(ctx: Context) : View.OnTouchListener {
 
         override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
             var result = false
-
+            try {
+                val diffY = e2.y - e1.y
+                val diffX = e2.x - e1.x
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                    if (Math.abs(diffX) > SWIPE_THRESHOLD && abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                        if (diffX > 0) {
+                            onSwipeRight()
+                        } else {
+                            onSwipeLeft()
+                        }
+                        result = true
+                    }
+                } else if (Math.abs(diffY) > SWIPE_THRESHOLD && abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
+                    if (diffY > 0) {
+                        onSwipeBottom()
+                    } else {
+                        onSwipeTop()
+                    }
+                    result = true
+                }
+            } catch (exception: Exception) {
+                exception.printStackTrace()
+            }
             return result
         }
     }
