@@ -19,7 +19,20 @@ open class OnSwipeTouchListener(ctx: Context) : View.OnTouchListener {
     }
 
     private inner class GestureListener : SimpleOnGestureListener() {
+        override fun onDown(e: MotionEvent): Boolean {
+            return true
+        }
 
+        override fun onDoubleTap(e: MotionEvent?): Boolean {
+            onDoubleTap()
+            return super.onDoubleTap(e)
+        }
+
+        override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+            var result = false
+
+            return result
+        }
     }
     open fun onDoubleTap(){}
     open fun onSwipeRight() {}
